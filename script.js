@@ -1,4 +1,7 @@
 const possibleHands = ['rock', 'paper', 'scissors'];
+let computerScore = 0;
+let playerScore = 0;
+let totalScore = 0;
 
 function getComputerChoice() 
 {
@@ -9,7 +12,7 @@ function getComputerChoice()
 
 function getPlayerChoice() 
 {
-    let playerSelection = prompt('What is your choice?', 'rock/paper/scissors');
+    let playerSelection = prompt('What is your choice?', 'rock/paper/scissors') || '';
     return playerSelection.toLowerCase();
 }
 
@@ -19,13 +22,17 @@ function playRound(playerChoice, computerChoice)
     if ((playerChoice === 'scissors' && computerChoice === 'paper') ||
         (playerChoice === 'rock' && computerChoice === 'scissors') ||
         (playerChoice === 'paper' && computerChoice === 'rock')) 
-    {
+    {   
+        totalScore++;
+        playerScore++;
         return 'You won this round.';        
     }
     else if ((playerChoice === 'scissors' && computerChoice === 'rock')||
         (playerChoice === 'rock' && computerChoice === 'paper')||
         (playerChoice === 'paper' && computerChoice === 'scissors'))
     {
+        totalScore++;
+        computerScore++;
         return 'You lost this round.'; 
     }
     else if (playerChoice === computerChoice)
@@ -36,14 +43,21 @@ function playRound(playerChoice, computerChoice)
     {
         return 'You need to choose rock, paper or scissors only!';
     }
-
 }
 
 function game() 
 {
-    for (let i = 0; i < 5; i++) 
+    for (totalScore = 0; totalScore < 5;) 
     {
         console.log(playRound(getPlayerChoice(), getComputerChoice()));
+    }
+    if (playerScore > computerScore) 
+    {
+    console.log('You won the whole game ' + playerScore + ' to ' + computerScore + '!');
+    } 
+    else 
+    {
+    console.log('You lost the game ' + computerScore + ' to ' + playerScore + '!');
     }
 }
 
