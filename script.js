@@ -10,7 +10,7 @@ function getComputerChoice()
 function getPlayerChoice() 
 {
     let playerSelection = prompt('What is your choice?', 'rock/paper/scissors');
-    return playerSelection;
+    return playerSelection.toLowerCase();
 }
 
 function playRound(playerChoice, computerChoice) 
