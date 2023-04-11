@@ -1,1 +1,1 @@
-# rock-paper-scissors
+This is is a console based game of Rock Paper Scissors, with score tracking and best of 5 mode.
